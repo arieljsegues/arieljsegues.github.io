@@ -1,0 +1,266 @@
+---
+import Layout from "../layouts/layout.astro";
+import { getCollection, render } from "astro:content";
+import AudioPlayer from "../components/AudioPlayer.astro";
+
+export async function getStaticPaths() {
+	const projects = await getCollection("projects");
+
+	return projects.map((project) => ({
+		params: {
+			slug: project.id,
+		},
+		props: {
+			project,
+		},
+	}));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+
+const sections = [
+	{
+		id: "video",
+		label: "VIDEO",
+		enabled: Boolean(project.data.video),
+	},
+	{
+		id: "sound",
+		label: "SOUND",
+		enabled: project.data.tracks.length > 0,
+	},
+	{
+		id: "info",
+		label: "INFO",
+		enabled: true,
+	},
+	{
+		id: "credits",
+		label: "CREDITS",
+		enabled: project.data.credits.length > 0,
+	},
+].filter((section) => section.enabled);
+---
+
+<a href="#top" class="back-to-top" data-back-to-top>
+	↑ Back to top
+</a>
+
+<Layout
+	title={`${project.data.title} — Ariel`}
+	description={project.data.description}
+	projectPage={true}
+>
+	<div id = "top" class="project-page">
+
+		<nav class="project-index" aria-label="Project sections">
+			{sections.map((section, index) => (
+				<a
+					href={`#${section.id}`}
+					data-section-link={section.id}
+				>
+					<span>{String(index + 1).padStart(2, "0")}</span>
+					{section.label}
+				</a>
+			))}
+		</nav>
+
+		<main>
+			<section class="project-header">
+				<p class="eyebrow">
+					{project.data.category} · {project.data.year}
+				</p>
+
+				<h1>{project.data.title}</h1>
+
+				<p class="intro">
+					{project.data.description}
+				</p>
+			</section>
+
+			{
+				project.data.video && (
+					<section
+						id="video"
+						data-section
+						class="video-section"
+					>
+						<p class="section-label">01 — VIDEO</p>
+
+						<video
+							controls
+							preload="metadata"
+							poster={project.data.image}
+						>
+							<source
+								src={project.data.video}
+								type="video/mp4"
+							/>
+
+							Your browser does not support video playback.
+						</video>
+					</section>
+				)
+			}
+
+			{
+				project.data.tracks.length > 0 && (
+					<section
+						id="sound"
+						data-section
+						class="sound-section"
+					>
+						<p class="section-label">SOUND DESIGN</p>
+
+						<div class="tracks">
+							{project.data.tracks.map((track, index) => (
+								<div class="track">
+									<div class="track-info">
+										<span class="track-number">
+											{String(index + 1).padStart(2, "0")}
+										</span>
+									</div>
+
+									<AudioPlayer
+										title={track.title}
+										file={track.file}
+									/>
+								</div>
+							))}
+						</div>
+					</section>
+				)
+			}
+
+			<article
+				id="info"
+				data-section
+				class="project-text"
+			>
+				<p class="section-label">INFO</p>
+
+				<Content />
+			</article>
+
+			{
+				project.data.credits.length > 0 && (
+					<section
+						id="credits"
+						data-section
+						class="credits"
+					>
+						<p class="section-label">CREDITS</p>
+
+						<div class="credit-list">
+							{project.data.credits.map((credit) => (
+								<div class="credit-row">
+									<span class="credit-role">
+										{credit.role}
+									</span>
+
+									<span class="credit-name">
+										{credit.name}
+									</span>
+								</div>
+							))}
+						</div>
+					</section>
+				)
+			}
+		</main>
+	</div>
+</Layout>
+
+<script>
+	const sections =
+		document.querySelectorAll<HTMLElement>(
+			"[data-section]"
+		);
+
+	const links =
+		document.querySelectorAll<HTMLAnchorElement>(
+			"[data-section-link]"
+		);
+
+	const setActiveSection = (id: string) => {
+		links.forEach((link) => {
+			link.classList.toggle(
+				"is-active",
+				link.dataset.sectionLink === id
+			);
+		});
+	};
+
+	if (sections.length && links.length) {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (!entry.isIntersecting) {
+						return;
+					}
+
+					setActiveSection(entry.target.id);
+				});
+			},
+			{
+				rootMargin: "-35% 0px -55% 0px",
+				threshold: 0,
+			}
+		);
+
+		sections.forEach((section) => {
+			observer.observe(section);
+		});
+
+		const handleScroll = () => {
+			const scrollPosition =
+				window.scrollY + window.innerHeight;
+
+			const documentHeight =
+				document.documentElement.scrollHeight;
+
+			const isAtBottom =
+				scrollPosition >= documentHeight - 10;
+
+			if (isAtBottom) {
+				const lastSection =
+					sections[sections.length - 1];
+
+				if (lastSection) {
+					setActiveSection(lastSection.id);
+				}
+			}
+		};
+
+		window.addEventListener(
+			"scroll",
+			handleScroll,
+			{ passive: true }
+		);
+
+		handleScroll();
+	}
+
+	const backToTop =
+		document.querySelector<HTMLAnchorElement>(
+			"[data-back-to-top]"
+		);
+
+	if (backToTop) {
+		const updateBackToTop = () => {
+			backToTop.classList.toggle(
+				"is-visible",
+				window.scrollY > window.innerHeight
+			);
+		};
+
+		window.addEventListener(
+			"scroll",
+			updateBackToTop,
+			{ passive: true }
+		);
+
+		updateBackToTop();
+	}
+</script>

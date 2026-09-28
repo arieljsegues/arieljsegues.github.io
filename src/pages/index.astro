@@ -1,0 +1,84 @@
+
+---
+import Layout from "../layouts/layout.astro";
+import { getCollection } from "astro:content";
+import ProjectCard from "../components/ProjectCard.astro";
+
+const projects = await getCollection("projects");
+---
+
+<Layout
+	title="Ariel — Sound Designer"
+	description="Sound designer, sound editor and audio creator."
+>
+	<main>
+		<section class="hero">
+			<p class="eyebrow">SOUND DESIGNER</p>
+
+			<h1>
+				Sound for<br />
+				images.
+			</h1>
+
+			<p class="intro">
+				Sound designer, editor and creator working across film,
+				games and audiovisual projects.
+			</p>
+		</section>
+
+		<section id="work" class="work">
+			<p class="section-label">SELECTED WORK</p>
+
+			<div class="projects">
+				{
+					projects
+						.filter((project) => project.data.featured)
+						.map((project) => (
+							<ProjectCard project={project} />
+						))
+				}
+			</div>
+		</section>
+
+		<section id="about" class="about">
+			<p class="section-label">ABOUT</p>
+
+			<p class="about-text">
+				I work with sound, dialogue, ambience, foley and music
+				to build audiovisual experiences.
+			</p>
+		</section>
+
+		<section id="contact" class="contact">
+			<p class="section-label">CONTACT</p>
+
+			<div class="home-contact-methods">
+				<a
+					class="contact-method"
+					href="mailto:arieljsegues@gmail.com"
+				>
+					<div>
+						<p class="section-label">EMAIL</p>
+						<h2>arieljsegues@gmail.com</h2>
+					</div>
+
+					<span class="contact-arrow">↗</span>
+				</a>
+
+				<a
+					class="contact-method"
+					href="https://wa.me/34717708066"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<div>
+						<p class="section-label">WHATSAPP</p>
+						<h2>+34 717 708 066</h2>
+					</div>
+
+					<span class="contact-arrow">↗</span>
+				</a>
+			</div>
+		</section>
+	</main>
+</Layout>

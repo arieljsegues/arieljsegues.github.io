@@ -1,0 +1,28 @@
+---
+interface Props {
+	projectPage?: boolean;
+}
+
+const { projectPage = false } = Astro.props;
+---
+
+<header>
+	<nav>
+		<a href="/" class="logo">ARIEL SEGUÉS</a>
+
+		{
+			projectPage ? (
+				<a href="/works" class="back">
+					← Back to work
+				</a>
+			) : (
+				<div class="nav-links">
+					<a href="/works">Work</a>
+					<a href="/about">About</a>
+					<a href="/cv">CV</a>
+					<a href="/contact">Contact</a>
+				</div>
+			)
+		}
+	</nav>
+</header>
