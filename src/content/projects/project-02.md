@@ -1,7 +1,7 @@
 ---
 title: "La campana de Huesca"
 year: 2026
-category: "Instalation"
+category: "Installation"
 description: "5.1 Sound design, editing and final mix for a four-wall immersive space."
 image: "/images/project-02.jpg"
 video: "/video/project-02.mp4"

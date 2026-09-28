@@ -1,7 +1,7 @@
 ---
 title: "Kapsula Kuantikoa"
 year: 2026
-category: "Instalation"
+category: "Installation"
 description: "Sound design, editing and final mix for a surround instalation."
 image: "/images/project-04.png"
 video: "/video/project-04.mp4"
