@@ -962,3 +962,23 @@ footer {
 		max-height: none;
 	}
 }
+
+.contact > .section-label {
+	display: inline;
+	margin: 0;
+	font-size: 12px;
+	letter-spacing: 0.15em;
+	color: #999;
+	text-transform: uppercase;
+	border: 0;
+}
+
+.about > .section-label,
+.contact > .section-label {
+	transition: color 0.2s ease;
+}
+
+.about > .section-label:hover,
+.contact > .section-label:hover {
+	color: #f2f2f2;
+}
