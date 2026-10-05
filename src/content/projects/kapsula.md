@@ -15,7 +15,7 @@ credits:
   - role: "Corporation"
     name: "Framemov"
 
-featured: true
+featured: false
 ---
 
 For Kapsula Kuantikoa, an educational installation on quantum physics, I handled the complete sound design across introductory sequences, transitions, and instructional videos. The main challenge was balancing a futuristic, abstract sonic identity with crystal-clear speech intelligibility, ensuring the audio smoothly guided visitors through complex scientific concepts without ever overwhelming the educational content.

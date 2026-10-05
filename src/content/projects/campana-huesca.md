@@ -1,5 +1,5 @@
 ---
-title: "La campana de Huesca"
+title: "La campana de Huesca - 5.1 Surround"
 year: 2026
 category: "Installation"
 description: "5.1 Sound design, editing and final mix for a four-wall immersive space."
