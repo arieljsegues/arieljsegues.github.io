@@ -477,9 +477,7 @@ h3 {
   min-width: 0;
 }
 
-.project:nth-child(3n + 2) {
-  margin-top: clamp(20px, 4vw, 58px);
-}
+
 
 .project-image {
   position: relative;
@@ -1767,5 +1765,41 @@ footer {
 
   .contact-cta-link {
     width: 100%;
+  }
+}
+
+/* Fix: homepage full width on mobile */
+@media (max-width: 600px) {
+  main {
+    width: 100%;
+    max-width: 100%;
+    padding-left: var(--page-gutter);
+    padding-right: var(--page-gutter);
+  }
+
+  .contact-cta {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .contact-cta-content {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .contact-cta-link {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .hero,
+  .work,
+  .about {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .section-topline {
+    min-width: 0;
   }
 }
