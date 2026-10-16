@@ -1,3 +1,4 @@
+
 ---
 import Layout from "../layouts/layout.astro";
 ---
@@ -6,32 +7,53 @@ import Layout from "../layouts/layout.astro";
 	title="About — Ariel Segues"
 	description="Ariel Segues is a sound designer and technical audio designer based in Barcelona, working remotely worldwide."
 >
-	<main>
-		<section class="about-hero">
-			<p class="eyebrow">ABOUT</p>
+	<main class="about-page">
+		<section class="about-hero" aria-labelledby="about-title">
+			<div class="about-topline">
+				<p class="eyebrow">
+					<span class="about-status-dot" aria-hidden="true"></span>
+					ABOUT / 01
+				</p>
 
-			<h1>
-				Sound designer &
+				<span class="about-hero-meta">
+					SOUND DESIGN / TECHNICAL AUDIO
+				</span>
+			</div>
+
+			<h1 id="about-title">
+				Sound designer
 				<br />
-				technical audio designer.
+				<span>& technical</span>
+				<br />
+				audio designer.
 			</h1>
 
-			<p class="intro">
-				I design and implement sound for games and interactive
-				media, working remotely with teams worldwide.
-			</p>
+			<div class="about-hero-bottom">
+				<p class="intro">
+					I design and implement sound for games and interactive
+					media, working remotely with teams worldwide.
+				</p>
+
+				<div class="about-hero-index" aria-hidden="true">
+					<span>BARCELONA, SPAIN</span>
+					<span>WORKING WORLDWIDE ↗</span>
+				</div>
+			</div>
 		</section>
 
-		<section class="about-content">
-			<div class="about-column">
-				<p class="section-label">PROFILE</p>
+		<section
+			class="about-content"
+			aria-label="Profile and services"
+		>
+			<div class="about-column about-profile">
+				<p class="section-label">02 / Profile</p>
 
 				<div class="about-text">
 					<p>
-						My work combines sound design with technical audio
-						implementation. I create detailed, expressive sound
-						and bring it into the game through Wwise, FMOD,
-						Unity and Unreal Engine.
+						My work combines <em>sound design</em> with
+						technical audio implementation. I create detailed,
+						expressive sound and bring it into the game through
+						Wwise, FMOD, Unity and Unreal Engine.
 					</p>
 
 					<p>
@@ -47,71 +69,118 @@ import Layout from "../layouts/layout.astro";
 						from both the creative and technical sides.
 					</p>
 				</div>
+
+				<div class="about-tools" aria-label="Tools">
+					<span>Wwise</span>
+					<span>FMOD</span>
+					<span>Unity</span>
+					<span>Unreal Engine</span>
+					<span>Godot</span>
+				</div>
 			</div>
 
-			<div class="about-column">
-				<p class="section-label">SERVICES</p>
+			<div class="about-column about-services">
+				<div class="about-services-heading">
+					<p class="section-label">03 / Services</p>
+					<span class="about-count">06 FIELDS</span>
+				</div>
 
 				<div class="services">
 					<div class="service">
 						<span>01</span>
 						<strong>Game Sound Design</strong>
+						<span class="service-arrow" aria-hidden="true">↗</span>
 					</div>
 
 					<div class="service">
 						<span>02</span>
 						<strong>Audio Implementation</strong>
+						<span class="service-arrow" aria-hidden="true">↗</span>
 					</div>
 
 					<div class="service">
 						<span>03</span>
 						<strong>Technical Audio</strong>
+						<span class="service-arrow" aria-hidden="true">↗</span>
 					</div>
 
 					<div class="service">
 						<span>04</span>
 						<strong>Custom SFX</strong>
+						<span class="service-arrow" aria-hidden="true">↗</span>
 					</div>
 
 					<div class="service">
 						<span>05</span>
 						<strong>Sound Editing</strong>
+						<span class="service-arrow" aria-hidden="true">↗</span>
 					</div>
 
 					<div class="service">
 						<span>06</span>
 						<strong>Audiovisual Sound</strong>
+						<span class="service-arrow" aria-hidden="true">↗</span>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<section class="about-credits">
-			<div>
-				<p class="section-label">LOCATION</p>
+		<section class="about-credits" aria-label="Working details">
+			<div class="about-credit">
+				<p class="section-label">04 / Location</p>
 				<p>Barcelona, Spain</p>
 			</div>
 
-			<div>
-				<p class="section-label">WORKING WITH</p>
+			<div class="about-credit">
+				<p class="section-label">Working with</p>
 				<p>
-					Indie game developers · Game studios · Interactive
-					projects · Audiovisual productions
+					Indie developers, game studios, interactive projects
+					and audiovisual productions.
 				</p>
 			</div>
 
-			<div>
-				<p class="section-label">AVAILABILITY</p>
-				<p>Remote · Worldwide</p>
+			<div class="about-credit">
+				<p class="section-label">Availability</p>
+				<p>
+					<span class="about-status-dot" aria-hidden="true"></span>
+					Remote · Worldwide
+				</p>
 			</div>
 		</section>
 
-		<section class="about-photo">
-			<img
-				src="/images/about.jpg"
-				alt="Ariel Jimenez Segues"
-				loading="lazy"
-			/>
+		<section class="about-photo" aria-label="About Ariel">
+			<div class="about-photo-frame">
+				<img
+					src="/images/about.jpg"
+					alt="Ariel Jimenez Segues"
+					loading="lazy"
+					decoding="async"
+				/>
+
+				<div class="about-photo-caption">
+					<span>ARIEL JIMENEZ SEGUES</span>
+					<span>SOUND / SYSTEMS / EXPERIENCE</span>
+				</div>
+			</div>
+		</section>
+
+		<section class="about-contact" aria-labelledby="about-contact-title">
+			<p class="section-label">05 / Next step</p>
+
+			<h2 id="about-contact-title">
+				Have something
+				<br />
+				<span>in mind?</span>
+			</h2>
+
+			<p class="about-contact-description">
+				Let's talk about your project and how sound can bring it to life.
+			</p>
+
+			<a href="/contact" class="about-contact-link">
+				Get in touch
+				<span aria-hidden="true">↗</span>
+			</a>
 		</section>
 	</main>
 </Layout>
