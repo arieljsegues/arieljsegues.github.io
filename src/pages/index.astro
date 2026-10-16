@@ -1,106 +1,111 @@
-
 ---
 import Layout from "../layouts/layout.astro";
 import { getCollection } from "astro:content";
 import ProjectCard from "../components/ProjectCard.astro";
 
 const projects = await getCollection("projects");
+const featuredProjects = projects.filter((project) => project.data.featured);
 ---
 
 <Layout
-	title="Ariel — Sound Designer"
-	description="Sound designer, sound editor and audio creator."
+  title="Ariel — Sound Designer"
+  description="Sound designer and technical audio designer for games and interactive media. Sound design, audio implementation, Wwise and FMOD."
 >
-	<main>
-		<section class="hero">
-			<p class="eyebrow">SOUND DESIGNER & Technical Audio Designer</p>
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-topline">
+        <p class="eyebrow">Sound designer / Technical audio designer</p>
+        <span class="hero-availability">
+          <span class="availability-dot" aria-hidden="true"></span>
+          Available for selected projects
+        </span>
+      </div>
 
-			<h1>
-				Sound for<br />
-				images.
-			</h1>
+      <h1 id="hero-title">
+        Sound for<br />
+        <em>images.</em>
+      </h1>
 
-			<p class="intro">
-				I design and implement sound for games and interactive media.
-			</p>
+      <p class="intro">
+        I design and implement sound for games and interactive media — from the first creative pass to the final in-engine details.
+      </p>
 
-			<div class="cv-list">
-				<span>Sound Design</span>
-				<span>Game Audio</span>
-				<span>Wwise</span>
-				<span>FMOD</span>
-				<span>Unity</span>
-				<span>Unreal Engine</span>
-				<span>Godot</span>
-			</div>
-		</section>
+      <div class="hero-footer">
+        <div class="cv-list" aria-label="Tools and specialisms">
+          <span>Sound Design</span>
+          <span>Game Audio</span>
+          <span>Wwise</span>
+          <span>FMOD</span>
+          <span>Unity</span>
+          <span>Unreal Engine</span>
+          <span>Godot</span>
+        </div>
 
-		<section id="work" class="work">
-			<p class="section-label">SELECTED WORK</p>
+        <a class="hero-work-link" href="#work">
+          Explore selected work <span aria-hidden="true">↘</span>
+        </a>
+      </div>
+    </section>
 
-			<div class="projects">
-				{
-					projects
-						.filter((project) => project.data.featured)
-						.map((project) => (
-							<ProjectCard project={project} />
-						))
-				}
-			</div>
+    <section id="work" class="work" aria-labelledby="work-heading">
+      <div class="section-topline">
+        <p id="work-heading" class="section-label">01 / Selected work</p>
+        <span class="section-label">Sound design · Implementation · Interactive audio</span>
+      </div>
 
-			<a
-				class="cv-download"
-				href="/works"
-			>
-				Check all my work ↗
-			</a>
+      <div class="projects">
+        {
+          featuredProjects.map((project) => (
+            <ProjectCard project={project} />
+          ))
+        }
+      </div>
 
-		</section>
+      <a class="cv-download" href="/works">
+        View all projects <span aria-hidden="true">↗</span>
+      </a>
+    </section>
 
-		<section id="about" class="about">
-			<a href="/about" class="section-label">Available for Freelance Work</a>
+    <section id="about" class="about" aria-labelledby="about-heading">
+      <div class="section-topline">
+        <p id="about-heading" class="section-label">02 / How I work</p>
+        <a href="/about" class="availability-link">
+          Available for freelance work <span aria-hidden="true">↗</span>
+        </a>
+      </div>
 
-			<p class="about-text">
-				I work remotely with game developers, studios and creative teams worldwide with sound, dialogue, ambience, foley and music
-				to build audiovisual experiences.
-			</p>
-		</section>
+      <p class="about-text">
+        I work remotely with game developers, studios and creative teams worldwide, combining sound, dialogue, ambience, foley and music to build <em>cohesive audiovisual experiences.</em>
+      </p>
 
+      <div class="about-capabilities" aria-label="Capabilities">
+        <span>Creative sound design</span>
+        <span>Technical audio design</span>
+        <span>Audio implementation</span>
+        <span>Interactive systems</span>
+        <span>Dialogue & ambience</span>
+      </div>
+    </section>
 
+    
+<section class="contact-cta" aria-labelledby="contact-cta-heading">
+  <div class="contact-cta-content">
+    <p class="section-label">03 / Get in touch</p>
 
+    <h2 id="contact-cta-heading">
+      Have a project<br />
+      <em>in mind?</em>
+    </h2>
 
-		
+    <p>
+      Let's talk about sound, games and interactive experiences.
+    </p>
+  </div>
 
-		<section id="contact" class="contact">
-			<a href="/contact" class="section-label">CONTACT</a>
+  <a class="contact-cta-link" href="/contact">
+    Get in touch <span aria-hidden="true">↗</span>
+  </a>
+</section>
 
-			<div class="home-contact-methods">
-				<a
-					class="contact-method"
-					href="mailto:arieljsegues@gmail.com"
-				>
-					<div>
-						<p class="section-label">EMAIL</p>
-						<h2>arieljsegues@gmail.com</h2>
-					</div>
-
-					<span class="contact-arrow">↗</span>
-				</a>
-
-				<a
-					class="contact-method"
-					href="https://wa.me/34717708066"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<div>
-						<p class="section-label">WHATSAPP</p>
-						<h2>+34 717 708 066</h2>
-					</div>
-
-					<span class="contact-arrow">↗</span>
-				</a>
-			</div>
-		</section>
-	</main>
+  </main>
 </Layout>
