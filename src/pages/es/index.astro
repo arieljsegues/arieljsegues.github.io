@@ -1,0 +1,120 @@
+
+---
+import Layout from "../../layouts/layout.astro";
+import { getCollection } from "astro:content";
+import ProjectCard from "../../components/ProjectCard.astro";
+
+const projects = await getCollection("projects");
+const featuredProjects = projects.filter((project) => project.data.featured);
+---
+
+<Layout
+  title="Ariel — Diseñador de sonido"
+  description="Diseñador de sonido y audio técnico para videojuegos y medios interactivos. Diseño sonoro, implementación de audio, Wwise y FMOD."
+  lang="es"
+>
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-topline">
+        <p class="eyebrow">Diseño sonoro / Audio técnico</p>
+        <span class="hero-availability">
+          <span class="availability-dot" aria-hidden="true"></span>
+          Disponible para proyectos
+        </span>
+      </div>
+
+      <h1 id="hero-title">
+        Sonido para<br />
+        <em>imágenes.</em>
+      </h1>
+
+      <p class="intro">
+        Diseño e implemento sonido para videojuegos y medios interactivos,
+        desde la primera propuesta creativa hasta los últimos detalles dentro
+        del motor.
+      </p>
+
+      <div class="hero-footer">
+        <div class="cv-list" aria-label="Herramientas y especialidades">
+          <span>Diseño sonoro</span>
+          <span>Audio para videojuegos</span>
+          <span>Wwise</span>
+          <span>FMOD</span>
+          <span>Unity</span>
+          <span>Unreal Engine</span>
+          <span>Godot</span>
+        </div>
+
+        <a class="hero-work-link" href="#work">
+          Explorar proyectos <span aria-hidden="true">↘</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="work" class="work" aria-labelledby="work-heading">
+      <div class="section-topline">
+        <p id="work-heading" class="section-label">
+          01 / Proyectos seleccionados
+        </p>
+        <span class="section-label">
+          Diseño sonoro · Implementación · Audio interactivo
+        </span>
+      </div>
+
+      <div class="projects">
+        {
+          featuredProjects.map((project) => (
+            <ProjectCard project={project} lang="es" />
+          ))
+        }
+      </div>
+
+      <a class="cv-download" href="/es/works">
+        Ver todos los proyectos <span aria-hidden="true">↗</span>
+      </a>
+    </section>
+
+    <section id="about" class="about" aria-labelledby="about-heading">
+      <div class="section-topline">
+        <p id="about-heading" class="section-label">02 / Cómo trabajo</p>
+        <a href="/es/about" class="availability-link">
+          Disponible para proyectos freelance <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <p class="about-text">
+        Trabajo en remoto con desarrolladores de videojuegos, estudios y
+        equipos creativos de todo el mundo, combinando sonido, diálogos,
+        ambientes, foley y música para crear 
+        <em> experiencias audiovisuales cohesivas.</em>
+      </p>
+
+      <div class="about-capabilities" aria-label="Especialidades">
+        <span>Diseño sonoro creativo</span>
+        <span>Audio técnico</span>
+        <span>Implementación de audio</span>
+        <span>Sistemas interactivos</span>
+        <span>Diálogos y ambientes</span>
+      </div>
+    </section>
+
+    <section class="contact-cta" aria-labelledby="contact-cta-heading">
+      <div class="contact-cta-content">
+        <p class="section-label">03 / Contacto</p>
+
+        <h2 id="contact-cta-heading">
+          ¿Tienes un proyecto<br />
+          <em>en mente?</em>
+        </h2>
+
+        <p>
+          Hablemos de sonido, videojuegos y experiencias interactivas.
+        </p>
+      </div>
+
+      <a class="contact-cta-link" href="/es/contact">
+        Contactar <span aria-hidden="true">↗</span>
+      </a>
+    </section>
+  </main>
+</Layout>

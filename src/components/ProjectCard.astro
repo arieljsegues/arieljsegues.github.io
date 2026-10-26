@@ -1,32 +1,44 @@
+
 ---
 import type { CollectionEntry } from "astro:content";
 
 interface Props {
-	project: CollectionEntry<"projects">;
+  project: CollectionEntry<"projects">;
+  lang?: "en" | "es";
 }
 
-const { project } = Astro.props;
+const { project, lang = "en" } = Astro.props;
+
+const title =
+  lang === "es"
+    ? project.data.titleEs || project.data.title
+    : project.data.title;
+
+const description =
+  lang === "es"
+    ? project.data.descriptionEs || project.data.description
+    : project.data.description;
+
+const href =
+  lang === "es"
+    ? `/es/${project.id}`
+    : `/${project.id}`;
 ---
 
-<a href={`/${project.id}`} class="project">
-	<div class="project-image">
-		<img
-			src={project.data.image}
-			alt={project.data.title}
-		/>
-	</div>
+<a href={href} class="project">
+  <div class="project-image">
+    <img src={project.data.image} alt={title} />
+  </div>
 
-	<div class="project-info">
-		<div>
-			<h2>{project.data.title}</h2>
+  <div class="project-info">
+    <div>
+      <h2>{title}</h2>
 
-			<p>
-				{project.data.category} · {project.data.year}
-			</p>
-		</div>
+      <p>
+        {project.data.category} · {project.data.year}
+      </p>
+    </div>
 
-		<p class="project-description">
-			{project.data.description}
-		</p>
-	</div>
+    <p class="project-description">{description}</p>
+  </div>
 </a>

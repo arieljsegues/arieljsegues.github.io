@@ -1,28 +1,95 @@
+
 ---
 interface Props {
-	projectPage?: boolean;
+  projectPage?: boolean;
+  lang?: "en" | "es";
 }
 
-const { projectPage = false } = Astro.props;
+const { projectPage = false, lang = "en" } = Astro.props;
+
+const pathname = Astro.url.pathname;
+const englishPath = pathname.replace(/^\/es(?=\/|$)/, "") || "/";
+const spanishPath = `/es${englishPath === "/" ? "/" : englishPath}`;
+
+const homePath = lang === "es" ? "/es/" : "/";
+const worksPath = lang === "es" ? "/es/works" : "/works";
+const aboutPath = lang === "es" ? "/es/about" : "/about";
+const cvPath = lang === "es" ? "/es/cv" : "/cv";
+const contactPath = lang === "es" ? "/es/contact" : "/contact";
+
+const labels = lang === "es"
+  ? {
+      back: "← Volver a proyectos",
+      work: "Proyectos",
+      about: "Sobre mí",
+      cv: "CV",
+      contact: "Contacto",
+    }
+  : {
+      back: "← Back to work",
+      work: "Work",
+      about: "About",
+      cv: "CV",
+      contact: "Contact",
+    };
 ---
 
 <header>
-	<nav>
-		<a href="/" class="logo">ARIEL SEGUÉS</a>
+  <nav>
+    <a href={homePath} class="logo">ARIEL SEGUÉS</a>
 
-		{
-			projectPage ? (
-				<a href="/works" class="back">
-					← Back to work
-				</a>
-			) : (
-				<div class="nav-links">
-					<a href="/works">Work</a>
-					<a href="/about">About</a>
-					<a href="/cv">CV</a>
-					<a href="/contact">Contact</a>
-				</div>
-			)
-		}
-	</nav>
+    {
+      projectPage ? (
+        <a href={worksPath} class="back">
+          {labels.back}
+        </a>
+      ) : (
+        <div class="nav-links">
+          <a href={worksPath}>{labels.work}</a>
+          <a href={aboutPath}>{labels.about}</a>
+          <a href={cvPath}>{labels.cv}</a>
+          <a href={contactPath}>{labels.contact}</a>
+        </div>
+      )
+    }
+
+
+	<div class="language-switcher" role="group" aria-label="Select language">
+	<a
+		href={englishPath}
+		lang="en"
+		aria-label="View website in English"
+		aria-current={lang === "en" ? "page" : undefined}
+		data-language="en"
+		class:list={{ active: lang === "en" }}
+	>
+		EN
+	</a>
+
+	<a
+		href={spanishPath}
+		lang="es"
+		aria-label="Ver la web en español"
+		aria-current={lang === "es" ? "page" : undefined}
+		data-language="es"
+		class:list={{ active: lang === "es" }}
+	>
+		ES
+	</a>
+	</div>
+
+  </nav>
 </header>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>(
+    "[data-language]"
+  ).forEach((link) => {
+    link.addEventListener("click", () => {
+      localStorage.setItem(
+        "preferred-language",
+        link.dataset.language!
+      );
+    });
+  });
+</script>

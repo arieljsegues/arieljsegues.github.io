@@ -1,11 +1,22 @@
-<footer>
-	<div class="footer-left">
-		© {new Date().getFullYear()} Ariel J. Segués
-	</div>
 
-	<div class="footer-right">
-		<a href="/about">About</a>
-		<a href="/contact">Contact</a>
-		<a href="/cv">CV</a>
-	</div>
+---
+interface Props {
+  lang?: "en" | "es";
+}
+
+const { lang = "en" } = Astro.props;
+
+const prefix = lang === "es" ? "/es" : "";
+---
+
+<footer>
+  <div class="footer-left">
+    © {new Date().getFullYear()} Ariel J. Segués
+  </div>
+
+  <div class="footer-right">
+    <a href={`${prefix}/about`}>{lang === "es" ? "Sobre mí" : "About"}</a>
+    <a href={`${prefix}/contact`}>{lang === "es" ? "Contacto" : "Contact"}</a>
+    <a href={`${prefix}/cv`}>CV</a>
+  </div>
 </footer>

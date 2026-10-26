@@ -1,35 +1,62 @@
+
 ---
 import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 
 interface Props {
-	title: string;
-	description?: string;
-	projectPage?: boolean;
+  title: string;
+  description?: string;
+  projectPage?: boolean;
+  lang?: "en" | "es";
 }
 
 const {
-	title,
-	description = "",
-	projectPage = false,
+  title,
+  description = "",
+  projectPage = false,
+  lang = "en",
 } = Astro.props;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="description" content={description} />
-		<title>{title}</title>
-		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-	</head>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  </head>
 
-	<body>
-		<Navbar projectPage={projectPage} />
+  <body>
+    <Navbar projectPage={projectPage} lang={lang} />
 
-		<slot />
+    <slot />
 
-		<Footer />
-	</body>
+    <Footer lang={lang} />
+    
+    <script>
+      const preferenceKey = "preferred-language";
+      const path = window.location.pathname;
+      const isSpanishPath = /^\/es(?:\/|$)/.test(path);
+      const savedLanguage = localStorage.getItem(preferenceKey);
+
+      const browserPrefersSpanish = navigator.languages.some(
+        (language) => /^es(?:-|$)/i.test(language)
+      );
+
+      // Redirect only when the current URL doesn't specify Spanish.
+      if (!isSpanishPath) {
+        if (
+          savedLanguage === "es" ||
+          (!savedLanguage && browserPrefersSpanish)
+        ) {
+          const spanishPath = `/es${path === "/" ? "/" : path}`;
+          window.location.replace(
+            spanishPath + window.location.search + window.location.hash
+          );
+        }
+      }
+    </script>
+  </body>
 </html>
