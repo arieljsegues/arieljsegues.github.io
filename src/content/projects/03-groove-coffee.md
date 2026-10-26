@@ -1,9 +1,9 @@
 ---
 title: "Groove Cafe - FMOD"
-year: 2025
+year: 2026
 category: "Videogame"
 description: "FMOD implementation, Sound design and Composition for Groove Cafe made using Unity."
-image: "/images/project-07.png"
+image: "/images/groove-cafe-cover.jpg"
 video: "/video/project-07.mp4"
 
 tracks:

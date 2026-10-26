@@ -27,7 +27,7 @@ credits:
   - role: "Corporation"
     name: "Framemov"
 
-featured: true
+featured: false
 ---
 
 For La campana de Huesca (2026), a four-wall immersive installation, I led the entire audio workflow—spanning 5.1 sound design, Foley editing, and final surround mixing. Crafting audio for a multi-screen environment meant translating a varied narrative, from intimate detail like footsteps and pen strokes to high-tension scenes, into a cohesive acoustic environment. By meticulously carving out frequency bands and positioning sound sources in 3D space, the mix fully wraps around the audience to heighten the drama.
