@@ -13,21 +13,24 @@ const featuredProjects = projects.filter((project) => project.data.featured);
 >
   <main>
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-topline">
-        <p class="eyebrow">Sound designer / Technical audio designer</p>
-        <span class="hero-availability">
-          <span class="availability-dot" aria-hidden="true"></span>
-          Available for selected projects
-        </span>
-      </div>
+  <div class="hero-topline">
+    <p class="eyebrow">Sound designer / Technical audio designer</p>
+    <span class="hero-availability">
+      <span class="availability-dot" aria-hidden="true"></span>
+      Available for selected projects
+    </span>
+  </div>
 
+  <div class="hero-layout">
+    <div class="hero-copy">
       <h1 id="hero-title">
         Sound for<br />
         <em>images.</em>
       </h1>
 
       <p class="intro">
-        I design and implement sound for games and interactive media — from the first creative pass to the final in-engine details.
+        I design and implement sound for games and interactive media —
+        from the first creative pass to the final in-engine details.
       </p>
 
       <div class="hero-footer">
@@ -45,26 +48,22 @@ const featuredProjects = projects.filter((project) => project.data.featured);
           Explore selected work <span aria-hidden="true">↘</span>
         </a>
       </div>
-    </section>
+    </div>
 
-    <section id="work" class="work" aria-labelledby="work-heading">
-      <div class="section-topline">
-        <p id="work-heading" class="section-label">01 / Selected work</p>
-        <span class="section-label">Sound design · Implementation · Interactive audio</span>
+      <div style="display: flex; justify-content: center; padding-top: 40px">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/fEZTC_l2l4M?si=8zw_pMGVqlxwnp9b"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
       </div>
-
-      <div class="projects">
-        {
-          featuredProjects.map((project) => (
-            <ProjectCard project={project} />
-          ))
-        }
-      </div>
-
-      <a class="cv-download" href="/works">
-        View all projects <span aria-hidden="true">↗</span>
-      </a>
-    </section>
+  </div>
+</section>
 
     <section id="about" class="about" aria-labelledby="about-heading">
       <div class="section-topline">
