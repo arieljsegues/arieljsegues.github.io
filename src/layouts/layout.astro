@@ -8,18 +8,16 @@ interface Props {
   title: string;
   description?: string;
   projectPage?: boolean;
-  lang?: "en" | "es";
 }
 
 const {
   title,
   description = "",
   projectPage = false,
-  lang = "en",
 } = Astro.props;
 ---
 
-<html lang={lang}>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -29,34 +27,10 @@ const {
   </head>
 
   <body>
-    <Navbar projectPage={projectPage} lang={lang} />
+    <Navbar projectPage={projectPage} />
 
     <slot />
 
-    <Footer lang={lang} />
-    
-    <script>
-      const preferenceKey = "preferred-language";
-      const path = window.location.pathname;
-      const isSpanishPath = /^\/es(?:\/|$)/.test(path);
-      const savedLanguage = localStorage.getItem(preferenceKey);
-
-      const browserPrefersSpanish = navigator.languages.some(
-        (language) => /^es(?:-|$)/i.test(language)
-      );
-
-      // Redirect only when the current URL doesn't specify Spanish.
-      if (!isSpanishPath) {
-        if (
-          savedLanguage === "es" ||
-          (!savedLanguage && browserPrefersSpanish)
-        ) {
-          const spanishPath = `/es${path === "/" ? "/" : path}`;
-          window.location.replace(
-            spanishPath + window.location.search + window.location.hash
-          );
-        }
-      }
-    </script>
+    <Footer lang="en" />
   </body>
 </html>

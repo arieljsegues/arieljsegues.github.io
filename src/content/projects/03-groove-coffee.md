@@ -30,7 +30,7 @@ credits:
   - role: "3D Artist"
     name: "Kassandra Miranda"
 
-featured: true
+featured: false
 ---
 
 For Groove Cafe (https://astridjaime.itch.io/groove-cafe), a 3D rhythm game, I was responsible for the complete sound design, audio implementation, and original soundtrack.

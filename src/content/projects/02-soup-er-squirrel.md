@@ -20,7 +20,7 @@ credits:
   - role: "2D Artist"
     name: "Shirogiii"
 
-featured: true
+featured: false
 ---
 
 For Soup-er Squirrel (https://yaygun.itch.io/soup-er-squirrel), a relaxing cooking game set in autumn, I was responsible for the sound design and audio implementation in FMOD.

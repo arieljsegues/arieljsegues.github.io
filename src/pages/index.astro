@@ -1,110 +1,150 @@
+
 ---
-import Layout from "../layouts/layout.astro";
 import { getCollection } from "astro:content";
+import Layout from "../layouts/layout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 
 const projects = await getCollection("projects");
-const featuredProjects = projects.filter((project) => project.data.featured);
+
+const featuredProjects = projects
+  .filter((project) => project.data.featured)
+  .sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
 ---
 
 <Layout
-  title="Ariel — Sound Designer"
-  description="Sound designer and technical audio designer for games and interactive media. Sound design, audio implementation, Wwise and FMOD."
+  title="Ariel J. Segués — Immersive Audio & Sound Design"
+  description="Immersive audio and spatial sound design for audiovisual installations, exhibitions and interactive experiences. Surround and multichannel audio."
 >
   <main>
+    <!-- HERO -->
     <section class="hero" aria-labelledby="hero-title">
-  <div class="hero-topline">
-    <p class="eyebrow">Sound designer / Technical audio designer</p>
-    <span class="hero-availability">
-      <span class="availability-dot" aria-hidden="true"></span>
-      Available for selected projects
-    </span>
-  </div>
+      <div class="hero-topline">
+        <p class="eyebrow">Immersive Audio / Spatial Sound Design</p>
 
-  <div class="hero-layout">
-    <div class="hero-copy">
-      <h1 id="hero-title">
-        Sound for<br />
-        <em>images.</em>
-      </h1>
+        <span class="hero-availability">
+          <span class="availability-dot" aria-hidden="true"></span>
+          Available for selected projects
+        </span>
+      </div>
 
-      <p class="intro">
-        I design and implement sound for games and interactive media —
-        from the first creative pass to the final in-engine details.
-      </p>
+      <div class="hero-layout">
+        <div class="hero-copy">
+          <h1 id="hero-title">
+            Sound beyond<br />
+            <em>stereo.</em>
+          </h1>
 
-      <div class="hero-footer">
-        <div class="cv-list" aria-label="Tools and specialisms">
-          <span>Sound Design</span>
-          <span>Game Audio</span>
-          <span>Wwise</span>
-          <span>FMOD</span>
-          <span>Unity</span>
-          <span>Unreal Engine</span>
-          <span>Godot</span>
+          <p class="intro">
+            I create and mix sound for immersive spaces, audiovisual
+            installations and experiences — shaping how sound moves
+            through and interacts with an environment.
+          </p>
+
+          <div class="hero-footer">
+            <a class="hero-work-link" href="#work">
+              Explore selected work <span aria-hidden="true">↘</span>
+            </a>
+          </div>
         </div>
-
-        <a class="hero-work-link" href="#work">
-          Explore selected work <span aria-hidden="true">↘</span>
-        </a>
       </div>
-    </div>
+    </section>
 
-      <div style="display: flex; justify-content: center; padding-top: 40px">
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/fEZTC_l2l4M?si=8zw_pMGVqlxwnp9b"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen>
-        </iframe>
+    <!-- SELECTED WORK -->
+    <section id="work" class="work">
+      <div class="section-topline">
+        <p class="section-label">01 / Selected work</p>
+        <span class="availability-link">A selection of projects</span>
       </div>
-  </div>
-</section>
 
+      <div class="projects">
+        {featuredProjects.map((project) => (
+          <ProjectCard project={project} />
+        ))}
+      </div>
+    </section>
+
+    <!-- ABOUT -->
     <section id="about" class="about" aria-labelledby="about-heading">
       <div class="section-topline">
-        <p id="about-heading" class="section-label">02 / How I work</p>
+        <p id="about-heading" class="section-label">02 / About</p>
+
         <a href="/about" class="availability-link">
-          Available for freelance work <span aria-hidden="true">↗</span>
+          More about me <span aria-hidden="true">↗</span>
         </a>
       </div>
 
       <p class="about-text">
-        I work remotely with game developers, studios and creative teams worldwide, combining sound, dialogue, ambience, foley and music to build <em>cohesive audiovisual experiences.</em>
+        I work with sound as a way of <em>shaping space and experience.</em>
+        Combining sound design, spatial composition and multichannel
+        mixing, I create sonic environments for installations,
+        exhibitions and audiovisual projects.
       </p>
 
-      <div class="about-capabilities" aria-label="Capabilities">
-        <span>Creative sound design</span>
-        <span>Technical audio design</span>
-        <span>Audio implementation</span>
-        <span>Interactive systems</span>
-        <span>Dialogue & ambience</span>
+      <div class="format-line">
+        <span class="format-label">Multichannel formats</span>
+        <span class="format-values">5.1 <i>·</i> 4.1.1 <i>·</i> 7.2</span>
       </div>
     </section>
 
-    
-<section class="contact-cta" aria-labelledby="contact-cta-heading">
-  <div class="contact-cta-content">
-    <p class="section-label">03 / Get in touch</p>
+    <!-- CONTACT -->
+    <section class="contact-cta" aria-labelledby="contact-cta-heading">
+      <div class="contact-cta-content">
+        <p class="section-label">03 / Get in touch</p>
 
-    <h2 id="contact-cta-heading">
-      Have a project<br />
-      <em>in mind?</em>
-    </h2>
+        <h2 id="contact-cta-heading">
+          Let's make<br />
+          <em>space for sound.</em>
+        </h2>
 
-    <p>
-      Let's talk about sound, games and interactive experiences.
-    </p>
-  </div>
+        <p>
+          Have an installation, exhibition or audiovisual project in mind?
+          I'd love to hear about it.
+        </p>
+      </div>
 
-  <a class="contact-cta-link" href="/contact">
-    Get in touch <span aria-hidden="true">↗</span>
-  </a>
-</section>
-
+      <a class="contact-cta-link" href="/contact">
+        Get in touch <span aria-hidden="true">↗</span>
+      </a>
+    </section>
   </main>
 </Layout>
+
+<style>
+  .format-line {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+
+  .format-label {
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 650;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .format-values {
+    color: var(--text);
+    font-size: clamp(17px, 2vw, 23px);
+    letter-spacing: 0.025em;
+  }
+
+  .format-values i {
+    padding: 0 8px;
+    color: var(--accent);
+    font-style: normal;
+  }
+
+  @media (max-width: 600px) {
+    .format-line {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+</style>

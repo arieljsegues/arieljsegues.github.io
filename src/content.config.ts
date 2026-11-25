@@ -47,7 +47,7 @@ const projects = defineCollection({
       .default([]),
 
     // Mostrar en proyectos destacados
-    featured: z.boolean().default(true),
+    featured: z.boolean().default(false),
   }),
 });
 

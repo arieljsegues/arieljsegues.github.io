@@ -4,42 +4,49 @@ import Layout from "../layouts/layout.astro";
 ---
 
 <Layout
-	title="Contact — Ariel"
-	description="Contact Ariel for sound design, sound editing and audiovisual projects."
+  title="Contact — Ariel J. Segués"
+  description="Get in touch with Ariel J. Segués for immersive audio, spatial sound design, audiovisual installations and creative collaborations."
 >
 	<main class="contact-page">
 		<section class="contact-hero">
-			<p class="eyebrow"><span class="status-dot"></span> CONTACT / 01</p>
+		<p class="eyebrow">
+			<span class="status-dot"></span>
+			CONTACT / 01
+		</p>
 
-			<h1>
-				Let's make
-				<br />
-				<span>some noise.</span>
-			</h1>
+		<h1>
+			Let's make
+			<br />
+			<span>space for sound.</span>
+		</h1>
 
-			<p class="intro">
-				For projects, collaborations, enquiries or just to say hello.
-				Tell me what you're working on.
-			</p>
+		<p class="intro">
+			Working on an installation, exhibition or audiovisual project?
+			Tell me a little about it and let's explore how sound can shape
+			the experience.
+		</p>
 
-			<div class="hero-index" aria-hidden="true">
-				<span>AVAILABLE FOR SELECT PROJECTS</span>
-				<span>41°23' N — 02°10' E</span>
-			</div>
+		<div class="hero-index" aria-hidden="true">
+			<span>AVAILABLE FOR SELECTED PROJECTS</span>
+			<span>41°23' N — 02°10' E</span>
+		</div>
 		</section>
 
 		<section class="contact-form-section" aria-labelledby="form-title">
 			<div class="form-intro">
-				<p class="section-label">START A CONVERSATION / 02</p>
-				<h2 id="form-title">What's the project?</h2>
-				<p>
-					Share a few details and I'll get back to you by email.
-				</p>
+			<p class="section-label">START A CONVERSATION / 02</p>
 
-				<div class="form-note">
-					<span class="note-symbol">↳</span>
-					<span>Usually replies within a few working days.</span>
-				</div>
+			<h2 id="form-title">What's the project?</h2>
+
+			<p>
+				Share a few details about your project and I'll get back to you
+				by email.
+			</p>
+
+			<div class="form-note">
+				<span class="note-symbol">↳</span>
+				<span>Usually replies within a few working days.</span>
+			</div>
 			</div>
 
 			<form id="contact-form" class="contact-form" novalidate>
@@ -102,18 +109,20 @@ import Layout from "../layouts/layout.astro";
 				</div>
 
 				<div class="form-field">
-					<label for="project-type">Type of project</label>
-					<div class="select-wrap">
-						<select id="project-type" name="project_type">
-							<option value="" disabled>Select a category</option>
-							<option value="Game audio">Game audio</option>
-							<option value="Sound design">Sound design</option>
-							<option value="Audio implementation">Audio implementation</option>
-							<option value="Film / audiovisual">Film / audiovisual</option>
-							<option value="Sound editing">Sound editing</option>
-							<option value="Other">Other</option>
-						</select>
-					</div>
+				<label for="project-type">Type of project</label>
+
+				<div class="select-wrap">
+					<select id="project-type" name="project_type">
+					<option value="" disabled selected>Select a category</option>
+					<option value="Immersive audio">Immersive audio</option>
+					<option value="Spatial sound design">Spatial sound design</option>
+					<option value="Audiovisual installation">Audiovisual installation</option>
+					<option value="Exhibition / cultural project">Exhibition / cultural project</option>
+					<option value="Interactive audio">Interactive audio</option>
+					<option value="Sound design / post-production">Sound design / post-production</option>
+					<option value="Other">Other</option>
+					</select>
+				</div>
 				</div>
 
 				<div class="form-field">
@@ -143,8 +152,11 @@ import Layout from "../layouts/layout.astro";
 		
 
 		<footer class="contact-footer">
-			<span>ARIEL — SOUND DESIGN / AUDIO IMPLEMENTATION</span>
-			<span>END OF TRANSMISSION <span class="footer-signal">●</span></span>
+		<span>ARIEL J. SEGUÉS — IMMERSIVE AUDIO / SPATIAL SOUND</span>
+		<span>
+			END OF TRANSMISSION
+			<span class="footer-signal">●</span>
+		</span>
 		</footer>
 	</main>
 

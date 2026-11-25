@@ -20,7 +20,7 @@ credits:
   - role: "Composer"
     name: "Elagon"
 
-featured: true
+featured: false
 ---
 
 For **PUSH** (https://crixusjam.itch.io/push), a horror game, I was responsible for the sound design and technical audio implementation.
